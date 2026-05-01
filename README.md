@@ -1,3 +1,27 @@
+🎓 Aula Acessível V2
+Este projeto nasceu da necessidade de promover a inclusão e a acessibilidade pedagógica no Atendimento Educacional Especializado (AEE). É uma ferramenta desenvolvida para auxiliar estudantes com deficiência auditiva ou dificuldades de processamento auditivo a acompanharem aulas síncronas em plataformas como Google Meet, WhatsApp ou Discord.  
+
+✨ Funcionalidades Principais:
+Tradução em Tempo Real: Transcreve a fala do professor instantaneamente usando a Web Speech API.  
+
+Acessibilidade Visual: Interface de alto contraste (amarelo e preto) e fontes amplas para facilitar a leitura.  
+
+Persistência de Áudio: Algoritmo que mantém o microfone ativo mesmo durante pausas prolongadas na fala.  
+
+Registro de Aula: Botão para salvar toda a transcrição em um arquivo .txt, permitindo que o aluno revise o conteúdo com calma posteriormente.  
+
+🛠️ Tecnologias Utilizadas:
+Next.js & React
+
+Tailwind CSS (Estilização)
+
+Lucide React (Ícones)
+
+Vercel (Hospedagem)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

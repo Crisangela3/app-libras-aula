@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { jsPDF } from "jspdf";
 import { Mic, MicOff, Trash2, X, HelpCircle, Monitor, FileText, User, GraduationCap, FolderOpen, Calendar, HeartPulse, ChevronRight, Users } from 'lucide-react';
-
 const App = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [transcription, setTranscription] = useState("");

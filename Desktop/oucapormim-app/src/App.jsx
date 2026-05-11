@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { jsPDF } from "jspdf";
-import { Mic, MicOff, Trash2, X, HelpCircle, Monitor, FileText, User, GraduationCap, FolderOpen, Calendar, HeartPulse, ChevronRight, Users } from 'lucide-react';
+// IMPORTAÇÃO COMPLETA DOS ÍCONES (O QUE ESTAVA CAUSANDO A TELA BRANCA)
+import { 
+  Mic, MicOff, Trash2, X, HelpCircle, Monitor, 
+  FileText, FolderOpen, Calendar, HeartPulse, 
+  Linkedin, Github, Mail, MapPin 
+} from 'lucide-react';
+
 const App = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [transcription, setTranscription] = useState("");
@@ -75,8 +81,8 @@ const App = () => {
   return (
     <div style={{ backgroundColor: colors.beige, minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif' }}>
       
-      {/* HEADER (Imagem 10/11) */}
-      <header style={{ backgroundColor: 'white', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      {/* HEADER */}
+      <header style={{ backgroundColor: 'white', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{ backgroundColor: colors.ciano, padding: '6px', borderRadius: '10px' }}><Mic size={20} color="white" /></div>
           <span style={{ fontSize: '22px', fontWeight: '900', color: colors.ciano }}>OuçaPorMim</span>
@@ -89,7 +95,7 @@ const App = () => {
         </div>
       </header>
 
-      {/* MAIN CONTENT (Imagem 10/11) */}
+      {/* MAIN CONTENT */}
       <main style={{ maxWidth: '1350px', width: '100%', margin: '0 auto', padding: '30px', display: 'grid', gridTemplateColumns: '1fr 340px', gap: '25px', flex: 1 }}>
         
         {/* ÁREA DE TRANSCRIÇÃO */}
@@ -98,7 +104,7 @@ const App = () => {
                 <select value={useMode} onChange={(e) => setUseMode(e.target.value)} style={{ padding: '8px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '15px', fontWeight: 'bold' }}>
                     <option value="Aula/Palestra">🎙️ Aula / Palestra</option>
                 </select>
-                <button onClick={() => {setTranscription(""); lastFinalTranscriptRef.current = "";}} style={{ border: 'none', background: 'none' }}><Trash2 size={24} color={colors.red}/></button>
+                <button onClick={() => {setTranscription(""); lastFinalTranscriptRef.current = "";}} style={{ border: 'none', background: 'none', cursor: 'pointer' }}><Trash2 size={24} color={colors.red}/></button>
             </div>
             
             <div style={{ flex: 1, backgroundColor: '#F9FAFB', borderRadius: '20px', padding: '25px', fontSize: '20px', border: '1px solid #eee', overflowY: 'auto' }}>
@@ -108,7 +114,7 @@ const App = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', marginTop: '15px' }}>
-                <button onClick={() => navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })} style={{ background: 'none', border: `2px solid ${colors.ciano}`, color: colors.ciano, padding: '10px 20px', borderRadius: '12px', fontSize: '13px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <button onClick={() => navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })} style={{ background: 'none', border: `2px solid ${colors.ciano}`, color: colors.ciano, padding: '10px 20px', borderRadius: '12px', fontSize: '13px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
                   <Monitor size={18} /> CONECTAR ÁUDIO DO MEET
                 </button>
                 <button onClick={toggleRecording} style={{ backgroundColor: isRecording ? colors.red : colors.ciano, width: '70px', height: '70px', borderRadius: '50%', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
@@ -117,8 +123,8 @@ const App = () => {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginTop: '20px' }}>
-                <button style={{ backgroundColor: colors.gold, color: 'white', padding: '15px', borderRadius: '12px', border: 'none', fontWeight: 'bold', fontSize: '15px' }}>SALVAR NO HISTÓRICO</button>
-                <button onClick={generatePDF} style={{ backgroundColor: 'white', color: colors.gold, padding: '15px', borderRadius: '12px', border: `2px solid ${colors.gold}`, fontWeight: 'bold', fontSize: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <button style={{ backgroundColor: colors.gold, color: 'white', padding: '15px', borderRadius: '12px', border: 'none', fontWeight: 'bold', fontSize: '15px', cursor: 'pointer' }}>SALVAR NO HISTÓRICO</button>
+                <button onClick={generatePDF} style={{ backgroundColor: 'white', color: colors.gold, padding: '15px', borderRadius: '12px', border: `2px solid ${colors.gold}`, fontWeight: 'bold', fontSize: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', cursor: 'pointer' }}>
                   <FileText size={20} /> GERAR PDF
                 </button>
             </div>
@@ -149,7 +155,26 @@ const App = () => {
         </aside>
       </main>
 
-      {/* MODAL DE AJUDA (IDÊNTICO À IMAGEM 8) */}
+      {/* RODAPÉ DO PROJETO - FINAL E AJUSTADO */}
+      <footer style={{ backgroundColor: 'white', padding: '20px 40px', borderTop: '1px solid #eee', marginTop: '20px' }}>
+          <div style={{ maxWidth: '1350px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
+              <div style={{ textAlign: 'left' }}>
+                  <p style={{ margin: 0, fontWeight: '900', color: colors.ciano, fontSize: '16px' }}>OuçaPorMim</p>
+                  <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>© 2026 - Desenvolvido por <b>Angela Cristina Silva Pinto</b></p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '3px', fontSize: '12px', color: '#888' }}>
+                      <MapPin size={12} color={colors.gold} /> Santo André - SP
+                  </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                  <a href="mailto:projeto.oucapormim@gmail.com" title="Enviar E-mail" style={{ color: colors.ciano }}><Mail size={22} /></a>
+                  <a href="https://www.linkedin.com/in/angela-cristina-silva-b40451108/" target="_blank" rel="noreferrer" title="LinkedIn" style={{ color: colors.ciano }}><Linkedin size={22} /></a>
+                  <a href="https://github.com/Crisangela3" target="_blank" rel="noreferrer" title="GitHub" style={{ color: colors.ciano }}><Github size={22} /></a>
+              </div>
+          </div>
+      </footer>
+
+      {/* MODAL DE AJUDA */}
       {showHelp && (
         <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 5000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '35px', maxWidth: '850px', width: '90%', position: 'relative' }}>
@@ -158,67 +183,41 @@ const App = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
               <div style={{ fontSize: '14px', color: '#444', textAlign: 'left' }}>
                 <h4 style={{ color: colors.gold, marginBottom: '20px', fontWeight: 'bold' }}>〉FUNCIONAMENTO DOS BOTÕES</h4>
-                <p style={{marginBottom:'10px'}}><b>💻 Conectar Áudio do Meet:</b> Use este botão quando estiver em uma aula online. Ele abrirá uma janela para você compartilhar a aba do Meet e capturar a fala do professor com clareza.</p>
-                <p style={{marginBottom:'10px'}}><b>🎙️ Microfone Central:</b> Clique no círculo azul para iniciar a escuta de conversas aleatórias ou presenciais. Clique novamente (ficará vermelho) para pausar.</p>
-                <p style={{marginBottom:'10px'}}><b>🗑️ Lixeira:</b> Serve para limpar todo o texto da tela atual caso você queira começar uma nova anotação sem salvar.</p>
-                <p><b>📄 Gerar PDF:</b> Transforma tudo o que foi escrito em um arquivo que você pode baixar e estudar depois.</p>
+                <p style={{marginBottom:'10px'}}><b>💻 Conectar Áudio do Meet:</b> Capture áudio de aulas online.</p>
+                <p style={{marginBottom:'10px'}}><b>🎙️ Microfone Central:</b> Clique no círculo azul para iniciar a escuta.</p>
+                <p style={{marginBottom:'10px'}}><b>🗑️ Lixeira:</b> Limpa o texto da tela.</p>
+                <p><b>📄 Gerar PDF:</b> Baixa a aula transcrita.</p>
               </div>
               <div style={{ fontSize: '14px', color: '#444', textAlign: 'left' }}>
-                <h4 style={{ color: colors.gold, marginBottom: '20px', fontWeight: 'bold' }}>〉REGRAS DO CADASTRO (IMPORTANTE)</h4>
-                <div style={{ backgroundColor: '#FFFBE6', padding: '25px', borderRadius: '25px', border: 'none' }}>
-                  <p>Para o <b>Uso Ilimitado</b>, preencha o cadastro com atenção total:</p>
-                  <ul style={{ paddingLeft: '20px', marginTop: '15px' }}>
-                    <li style={{marginBottom:'8px'}}><b>RA do Aluno:</b> É obrigatório conter o número completo <b>mais o dígito</b>.</li>
-                    <li style={{marginBottom:'8px'}}><b>Documentos:</b> CPF e RG não podem ter números faltando.</li>
-                    <li style={{marginBottom:'8px'}}><b>Endereços:</b> Verifique se o CEP e o endereço (seu e da escola) estão corretos.</li>
-                    <li><b>Código:</b> Após validar seus dados, enviaremos um código para seu <b>e-mail</b>. Digite-o no seu perfil para liberar todas as funções.</li>
-                  </ul>
+                <h4 style={{ color: colors.gold, marginBottom: '20px', fontWeight: 'bold' }}>〉REGRAS DO CADASTRO</h4>
+                <div style={{ backgroundColor: '#FFFBE6', padding: '25px', borderRadius: '25px' }}>
+                  <p>Para <b>Uso Ilimitado</b>, preencha o RA completo com o dígito. Enviaremos um código por e-mail para validar.</p>
                 </div>
               </div>
             </div>
-            <div style={{ backgroundColor: '#E0F7FA', padding: '20px', borderRadius: '25px', marginTop: '30px', fontSize: '13px', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '15px' }}>
-                <FolderOpen color={colors.gold} size={40}/>
-                <p><b>Como suas aulas são organizadas?</b> As aulas da semana aparecem no topo do painel lateral. Após 7 dias ou ao atingir 10 aulas, elas são movidas para as <b>Pastas de Antigas</b> ou <b>Pasta Médica</b> (dependendo do modo que você selecionou no topo da tela). Assim, nada fica bagunçado!</p>
-            </div>
-            <button onClick={() => setShowHelp(false)} style={{ backgroundColor: colors.ciano, color: 'white', width: '100%', padding: '18px', borderRadius: '20px', border: 'none', fontWeight: '900', fontSize: '16px', marginTop: '30px', cursor: 'pointer' }}>ENTENDI TUDO E QUERO COMEÇAR!</button>
+            <button onClick={() => setShowHelp(false)} style={{ backgroundColor: colors.ciano, color: 'white', width: '100%', padding: '18px', borderRadius: '20px', border: 'none', fontWeight: '900', fontSize: '16px', marginTop: '30px', cursor: 'pointer' }}>ENTENDI TUDO!</button>
           </div>
         </div>
       )}
 
-      {/* CADASTRO (Imagem 5) */}
+      {/* MODAL DE CADASTRO */}
       {showRegisterStep === 2 && (
         <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 4000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ backgroundColor: 'white', padding: '35px', borderRadius: '35px', width: '90%', maxWidth: '820px', maxHeight: '90vh', overflowY: 'auto', position: 'relative' }}>
             <button onClick={() => setShowRegisterStep(0)} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', background: '#f5f5f5', borderRadius: '50%', padding: '10px', cursor: 'pointer' }}><X size={24} color="#666" /></button>
             <h3 style={{ color: colors.ciano, textAlign: 'center', marginBottom: '25px', fontSize: '22px', fontWeight: 'bold' }}>Perfil do Usuário</h3>
-            <form onSubmit={(e) => { e.preventDefault(); alert("Cadastro finalizado! O código foi enviado ao seu e-mail."); setShowRegisterStep(0); }}>
-              <form action="https://formspree.io/f/mlgzpqga" method="POST"></form>
+            <form onSubmit={(e) => { e.preventDefault(); alert("Cadastro simulado com sucesso!"); setShowRegisterStep(0); }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '25px' }}>
                 <div>
                   <p style={{ color: colors.ciano, fontSize: '13px', fontWeight: 'bold', marginBottom: '10px' }}>👥 DADOS PESSOAIS</p>
                   <input placeholder="Nome Completo do Aluno" required style={inputStyle} />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}><input placeholder="CPF ou RG" required style={inputStyle} /><input placeholder="Celular/WhatsApp" required style={inputStyle} /></div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}><input placeholder="CPF ou RG" required style={inputStyle} /><input placeholder="Celular" required style={inputStyle} /></div>
                   <input placeholder="E-mail principal" required style={inputStyle} />
-                  <input placeholder="CEP" style={inputStyle} />
-                  <input placeholder="Endereço (Rua e Número)" style={inputStyle} />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}><input placeholder="Bairro" style={inputStyle} /><input placeholder="Cidade" style={inputStyle} /></div>
-                  <p style={{ color: colors.ciano, fontSize: '13px', fontWeight: 'bold', marginTop: '15px', marginBottom: '10px' }}>🤱 RESPONSÁVEL (MÃE)</p>
-                  <input placeholder="Nome Completo da Mãe" style={inputStyle} />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}><input placeholder="CPF/RG da Mãe" style={inputStyle} /><input placeholder="WhatsApp da Mãe" style={inputStyle} /></div>
                 </div>
                 <div>
                   <p style={{ color: colors.ciano, fontSize: '13px', fontWeight: 'bold', marginBottom: '10px' }}>🎓 PERFIL ACADÊMICO</p>
-                  <select style={inputStyle}><option>Ensino Fundamental I / II</option><option>Ensino Médio</option><option>Superior</option></select>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}><input placeholder="Série / ano?" style={inputStyle} /><input placeholder="RA" required style={inputStyle} /></div>
-                  <div style={{ backgroundColor: '#F0F0FA', padding: '15px', borderRadius: '15px', marginTop: '10px' }}>
-                    <p style={{ color: '#5C6BC0', fontSize: '11px', fontWeight: 'bold', marginBottom: '8px' }}>DADOS DA INSTITUIÇÃO</p>
-                    <input placeholder="Nome da Escola ou Faculdade" required style={inputStyle} />
-                    <input placeholder="Endereço da Instituição" style={inputStyle} />
-                  </div>
-                  <div style={{ border: `3px dashed ${colors.ciano}`, padding: '15px', borderRadius: '15px', marginTop: '15px' }}>
-                    <p style={{ fontSize: '11px', fontWeight: 'bold', color: colors.ciano }}>CÓDIGO (ENVIADO POR E-MAIL)</p>
-                    <input placeholder="Digite o código aqui" style={{ ...inputStyle, marginBottom: 0 }} />
-                  </div>
+                  <input placeholder="Nome da Escola" required style={inputStyle} />
+                  <input placeholder="RA" required style={inputStyle} />
                 </div>
               </div>
               <button type="submit" style={{ backgroundColor: colors.ciano, color: 'white', width: '100%', padding: '15px', borderRadius: '15px', border: 'none', fontWeight: 'bold', fontSize: '16px', marginTop: '25px', cursor: 'pointer' }}>FINALIZAR CADASTRO</button>
@@ -235,28 +234,7 @@ const App = () => {
             <input placeholder="E-mail" style={inputStyle} />
             <input type="password" placeholder="Senha" style={inputStyle} />
             <button onClick={() => setShowRegisterStep(2)} style={{ backgroundColor: colors.ciano, color: 'white', width: '100%', padding: '15px', borderRadius: '12px', border: 'none', fontWeight: 'bold', marginTop: '10px', cursor: 'pointer' }}>ENTRAR</button>
-            <button style={{ background: 'none', border: 'none', color: colors.ciano, fontSize: '13px', marginTop: '15px', textDecoration: 'underline', cursor: 'pointer' }}>Esqueceu sua senha? Clique aqui para recuperar via e-mail.</button>
             <div style={{marginTop: '20px'}}><button onClick={() => setShowRegisterStep(0)} style={{ border: 'none', background: 'none', color: '#999', cursor: 'pointer', fontSize: '13px' }}>Fechar</button></div>
-            {/* RODAPÉ DO PROJETO */}
-<footer style={{ 
-  padding: '20px', 
-  textAlign: 'center', 
-  fontSize: '13px', 
-  color: '#666', 
-  backgroundColor: 'white', 
-  borderTop: '1px solid #eee',
-  marginTop: 'auto' // Garante que o rodapé fique no final
-}}>
-  <p style={{ margin: '5px 0' }}>
-    © {new Date().getFullYear()} - Desenvolvido por <strong>Angela Cristina Silva Pinto</strong>
-  </p>
-  <p style={{ margin: '5px 0' }}>
-    Contato: <a href="mailto:seuemail@gmail.com" style={{ color: colors.ciano, textDecoration: 'none' }}>projeto.oucapormim@gmail.com</a> 
-  </p>
-  <p style={{ fontSize: '11px', color: '#999' }}>
-    Projeto focado em Acessibilidade e Educação Inclusiva.
-  </p>
-</footer>
           </div>
         </div>
       )}
